@@ -4,5 +4,6 @@ import Button from './Button';
 import BasketButton from './BasketButton';
 import Avatar from './Avatar';
 import ProductCard from './ProductCard';
+import Counter from './Counter';
 
-export { Header, TextField, Button, BasketButton, Avatar, ProductCard };
+export { Header, TextField, Button, BasketButton, Avatar, ProductCard, Counter };

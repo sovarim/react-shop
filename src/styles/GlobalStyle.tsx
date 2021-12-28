@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
     margin: 0;
     padding: 0;
+    font-feature-settings: 'pnum' on, 'lnum' on;
   }
   *:visited {
     text-decoration: none;

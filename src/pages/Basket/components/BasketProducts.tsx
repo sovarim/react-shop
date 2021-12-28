@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 
 const BasketProductsRoot = styled.div`
   width: 100%;

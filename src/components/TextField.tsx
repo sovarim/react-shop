@@ -1,10 +1,9 @@
-import { FC, InputHTMLAttributes } from 'react';
-import SearchIcon from 'icons/SearchIcon';
+import React, { FC, InputHTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
-import Button from './Button';
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   fullWidth?: boolean;
+  endAdornment?: React.ReactElement;
 }
 
 interface TextFieldRootProps {
@@ -35,22 +34,17 @@ const TextFieldInput = styled.input`
   width: 100%;
 `;
 
-const TextFieldButtonWrapper = styled.div`
+const TextFieldAdornmentWrapper = styled.div`
   padding: 0.25rem 0.25rem 0.25rem 0;
-  height: 100%;
 `;
 
-const TextField: FC<TextFieldProps> = ({ fullWidth = false, ...props }) => {
+const TextField: FC<TextFieldProps> = ({ fullWidth = false, endAdornment, ...props }) => {
   return (
     <TextFieldRoot fullWidth={fullWidth}>
       <TextFieldInputWrapper>
         <TextFieldInput {...props} />
       </TextFieldInputWrapper>
-      <TextFieldButtonWrapper>
-        <Button color="gray" fullHeight>
-          <SearchIcon />
-        </Button>
-      </TextFieldButtonWrapper>
+      {endAdornment && <TextFieldAdornmentWrapper>{endAdornment}</TextFieldAdornmentWrapper>}
     </TextFieldRoot>
   );
 };

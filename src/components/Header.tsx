@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { TextField, Basket, Avatar } from 'components';
-import { GeoIcon } from 'icons';
+import { TextField, Basket, Avatar, Button } from 'components';
+import { GeoIcon, SearchIcon } from 'icons';
+import { Link } from 'react-router-dom';
 
 const HeaderRoot = styled.header`
   width: 100%;
@@ -10,8 +11,9 @@ const HeaderRoot = styled.header`
   background: #fff;
 `;
 
-const HeaderTitle = styled.h1`
+const HeaderTitle = styled(Link)`
   font-size: 2.3125rem;
+  color: inherit;
 `;
 
 const HeaderGeo = styled.div`
@@ -57,7 +59,7 @@ const Header = () => {
   return (
     <HeaderRoot>
       <HeaderLeftBox>
-        <HeaderTitle>React</HeaderTitle>
+        <HeaderTitle to="/">React</HeaderTitle>
         <HeaderGeo>
           <GeoIcon />
           <HeaderGeoText>Александровск-Саsdsdsd</HeaderGeoText>
@@ -65,9 +67,17 @@ const Header = () => {
       </HeaderLeftBox>
       <HeaderRightBox>
         <HeaderSearchWrapper>
-          <TextField placeholder="Поиск бренда, товара, категории..." fullWidth />
+          <TextField
+            fullWidth
+            placeholder="Поиск бренда, товара, категории..."
+            endAdornment={
+              <Button color="gray" fullHeight>
+                <SearchIcon />
+              </Button>
+            }
+          />
         </HeaderSearchWrapper>
-        <Basket />
+        <Basket to="/basket" />
         <Avatar src="https://vjoy.cc/wp-content/uploads/2019/06/1-14.jpg" />
       </HeaderRightBox>
     </HeaderRoot>

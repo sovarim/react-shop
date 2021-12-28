@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Products from './components/Products';
+import Categories from './components/Categories';
 
 const HomeRoot = styled.div`
   padding-top: 1.375rem;
@@ -17,7 +18,7 @@ const HomeTitleWrapper = styled.div`
 
 const HomeTitle = styled.h3`
   font-size: 1.25rem;
-  font-weight: 700px;
+  font-weight: 700;
 `;
 
 const HomeTitleAction = styled.button`
@@ -34,6 +35,7 @@ const Home = () => {
         <HomeTitle>Категории товаров</HomeTitle>
         <HomeTitleAction>Настройки</HomeTitleAction>
       </HomeTitleWrapper>
+      <Categories />
       <Products />
     </HomeRoot>
   );

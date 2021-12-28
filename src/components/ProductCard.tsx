@@ -65,7 +65,7 @@ const ProductCard: FC = () => {
       </ProductCardImageRoot>
       <ProducCardName>Длинное название товара в одну строчку п...</ProducCardName>
       <ProducCardPrice>от 350 000 ₽</ProducCardPrice>
-      <Button outlined color="blue">
+      <Button outlined color="blue" fullWidth>
         Добавить в корзину
       </Button>
     </ProductCardRoot>

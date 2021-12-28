@@ -1,25 +1,20 @@
-import { FC } from 'react';
+import { ButtonHTMLAttributes, FC } from 'react';
 import styled, { css } from 'styled-components';
 
-interface ButtonProps extends ButtonRootProps {
-  icon?: React.ReactElement;
-}
-
-interface ButtonRootProps {
-  large?: boolean;
+interface ButtonProps {
   color?: 'gray' | 'blue' | 'white';
   fullHeight?: boolean;
   fullWidth?: boolean;
   outlined?: boolean;
 }
 
-const ButtonRoot = styled.button<Required<ButtonRootProps>>`
+const ButtonRoot = styled.button<Required<Omit<ButtonProps, 'customColor'>>>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: ${({ outlined }) => (!outlined ? '12px 40px' : '11px 39px')};
-  font-size: ${(props) => (props.large ? '1rem' : '0.875rem')};
-  border-radius: 2.5rem;
+  padding: ${({ outlined }) => (outlined ? '11px 39px' : '12px 40px')};
+  font-size: 0.875rem;
+  border-radius: 25px;
   cursor: pointer;
   background: ${({ outlined, theme, color }) =>
     !outlined ? theme.colors[color] : theme.colors.white};
@@ -31,29 +26,33 @@ const ButtonRoot = styled.button<Required<ButtonRootProps>>`
     props.fullHeight &&
     css`
       height: 100%;
+      padding-top: 0;
+      padding-bottom: 0;
     `}
   ${(props) =>
     props.fullWidth &&
     css`
       width: 100%;
+      padding-left: 0;
+      padding-right: 0;
     `}
 `;
 
-const Button: FC<ButtonProps> = ({
-  large = false,
+const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({
   children,
   color = 'white',
   fullHeight = false,
   fullWidth = false,
   outlined = false,
+  ...props
 }) => {
   return (
     <ButtonRoot
-      large={large}
       color={color}
       fullWidth={fullWidth}
       fullHeight={fullHeight}
       outlined={outlined}
+      {...props}
     >
       {children}
     </ButtonRoot>

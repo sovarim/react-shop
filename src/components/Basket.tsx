@@ -1,12 +1,14 @@
-import styled from 'styled-components';
-import { BasketIcon } from 'icons';
 import { FC } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { BasketIcon } from 'icons';
 
 interface BasketProps {
   count?: number;
+  to?: string;
 }
 
-const BasketRoot = styled.span`
+const BasketRoot = styled(Link)`
   position: relative;
   width: 50px;
   height: 50px;
@@ -37,9 +39,9 @@ const BasketCount = styled.span`
   font-size: 0.875rem;
 `;
 
-const Basket: FC<BasketProps> = ({ count = 0 }) => {
+const Basket: FC<BasketProps> = ({ count = 0, to = '' }) => {
   return (
-    <BasketRoot>
+    <BasketRoot to={to}>
       <BasketIcon />
       <BasketCount>{count}</BasketCount>
     </BasketRoot>

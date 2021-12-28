@@ -39,7 +39,7 @@ const BasketCount = styled.span`
   font-size: 0.875rem;
 `;
 
-const Basket: FC<BasketProps> = ({ count = 0, to = '' }) => {
+const BasketButton: FC<BasketProps> = ({ count = 0, to = '' }) => {
   return (
     <BasketRoot to={to}>
       <BasketIcon />
@@ -48,4 +48,4 @@ const Basket: FC<BasketProps> = ({ count = 0, to = '' }) => {
   );
 };
 
-export default Basket;
+export default BasketButton;

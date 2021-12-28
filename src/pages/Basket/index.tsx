@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BasketProducts from './components/BasketProducts';
 
 const BasketRoot = styled.div`
   padding-top: 1.375rem;
@@ -33,6 +34,7 @@ const Basket = () => {
         <BasketTitle>Корзина</BasketTitle>
         <BasketTitleAction>Очистить корзину</BasketTitleAction>
       </BasketTitleWrapper>
+      <BasketProducts />
     </BasketRoot>
   );
 };

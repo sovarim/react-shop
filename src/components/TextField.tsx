@@ -14,7 +14,7 @@ const TextFieldRoot = styled.div.attrs<TextFieldRootProps>((props) => ({
   fullWidth: props.fullWidth,
 }))<TextFieldRootProps>`
   border: 1px solid #f0f4fb;
-  border-radius: 2.25rem;
+  border-radius: 36px;
   display: flex;
   ${(props) =>
     props.fullWidth &&

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TextField, Basket, Avatar, Button } from 'components';
+import { TextField, BasketButton, Avatar, Button } from 'components';
 import { GeoIcon, SearchIcon } from 'icons';
 import { Link } from 'react-router-dom';
 
@@ -77,7 +77,7 @@ const Header = () => {
             }
           />
         </HeaderSearchWrapper>
-        <Basket to="/basket" />
+        <BasketButton to="/basket" />
         <Avatar src="https://vjoy.cc/wp-content/uploads/2019/06/1-14.jpg" />
       </HeaderRightBox>
     </HeaderRoot>

@@ -1,10 +1,7 @@
+import { FC } from 'react';
 import styled from 'styled-components';
+import { Page } from 'components';
 import BasketProducts from './components/BasketProducts';
-
-const BasketRoot = styled.div`
-  padding-top: 1.375rem;
-  padding-bottom: 3.4375rem;
-`;
 
 const BasketTitleWrapper = styled.div`
   display: flex;
@@ -27,15 +24,15 @@ const BasketTitleAction = styled.button`
   cursor: pointer;
 `;
 
-const Basket = () => {
+const Basket: FC = () => {
   return (
-    <BasketRoot>
+    <Page>
       <BasketTitleWrapper>
         <BasketTitle>Корзина</BasketTitle>
         <BasketTitleAction>Очистить корзину</BasketTitleAction>
       </BasketTitleWrapper>
       <BasketProducts />
-    </BasketRoot>
+    </Page>
   );
 };
 

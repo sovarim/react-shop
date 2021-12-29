@@ -38,9 +38,14 @@ const TextFieldAdornmentWrapper = styled.div`
   padding: 0.25rem 0.25rem 0.25rem 0;
 `;
 
-const TextField: FC<TextFieldProps> = ({ fullWidth = false, endAdornment, ...props }) => {
+const TextField: FC<TextFieldProps> = ({
+  fullWidth = false,
+  endAdornment,
+  className,
+  ...props
+}) => {
   return (
-    <TextFieldRoot fullWidth={fullWidth}>
+    <TextFieldRoot fullWidth={fullWidth} className={className}>
       <TextFieldInputWrapper>
         <TextFieldInput {...props} />
       </TextFieldInputWrapper>

@@ -1,11 +1,8 @@
 import styled from 'styled-components';
+import { Page } from 'components';
 import Products from './components/Products';
 import Categories from './components/Categories';
-
-const HomeRoot = styled.div`
-  padding-top: 1.375rem;
-  padding-bottom: 3.4375rem;
-`;
+import { FC } from 'react';
 
 const HomeTitleWrapper = styled.div`
   display: flex;
@@ -28,16 +25,16 @@ const HomeTitleAction = styled.button`
   cursor: pointer;
 `;
 
-const Home = () => {
+const Home: FC = () => {
   return (
-    <HomeRoot>
+    <Page>
       <HomeTitleWrapper>
         <HomeTitle>Категории товаров</HomeTitle>
         <HomeTitleAction>Настройки</HomeTitleAction>
       </HomeTitleWrapper>
       <Categories />
       <Products />
-    </HomeRoot>
+    </Page>
   );
 };
 

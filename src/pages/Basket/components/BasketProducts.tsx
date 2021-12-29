@@ -2,6 +2,7 @@ import { Button } from 'components';
 import styled, { css } from 'styled-components';
 import BasketImage from 'assets/images/basket-image.svg';
 import BasketProductsItem from './BasketProductsItem';
+import { useNavigate } from 'react-router-dom';
 
 const BasketProductsRoot = styled.div`
   width: 100%;
@@ -41,6 +42,7 @@ const BasketProductsContainer = styled.div`
 `;
 
 const BasketProducts = () => {
+  const navigate = useNavigate();
   return (
     <BasketProductsRoot>
       <BasketProductsHeader>
@@ -95,6 +97,7 @@ const BasketProducts = () => {
             font-size: 1rem;
             font-weight: 600;
           `}
+          onClick={() => navigate('/delivery')}
         >
           Оформить
         </Button>

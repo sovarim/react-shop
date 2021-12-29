@@ -5,6 +5,8 @@ import isMobile from 'is-mobile';
 const SwiperRoot = styled.div`
   width: 100%;
   overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;
   }

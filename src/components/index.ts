@@ -7,6 +7,7 @@ import ProductCard from './ProductCard';
 import Counter from './Counter';
 import Page from './Page';
 import DateTimePicker from './DateTimePicker';
+import Swiper from './Swiper';
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   Counter,
   Page,
   DateTimePicker,
+  Swiper,
 };

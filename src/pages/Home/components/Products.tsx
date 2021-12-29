@@ -8,32 +8,37 @@ const ProductsRoot = styled.div`
   align-items: center;
 `;
 
-const ProductsFlexContainer = styled.div`
+const FlexContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   margin-top: -2.5rem;
   margin-left: -1.25rem;
   margin-bottom: 1.875rem;
-  & > * {
-    margin-left: 1.25rem;
-    margin-top: 2.5rem;
+`;
+
+const FlexItem = styled.div`
+  padding-left: 1.25rem;
+  padding-top: 2.5rem;
+  flex: 0 0 25%;
+  max-width: 25%;
+
+  ${({ theme }) => theme.breakpoints.laptop} {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 `;
 
 const Products = () => {
   return (
     <ProductsRoot>
-      <ProductsFlexContainer>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-      </ProductsFlexContainer>
+      <FlexContainer>
+        {[...new Array(12)].map((_, i) => (
+          <FlexItem key={i}>
+            <ProductCard />
+          </FlexItem>
+        ))}
+      </FlexContainer>
       <Button
         color="gray"
         style={{ color: '#727280', padding: '16px 44px', fontWeight: 600, fontSize: '1rem' }}

@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import Swiper from './Swiper';
 
 const ProductCardRoot = styled.div`
-  width: 214px;
+  width: 100%;
 `;
 
 const ProductCardImageRoot = styled.div`
@@ -55,6 +56,15 @@ const ProducCardPrice = styled.p`
   font-feature-settings: 'pnum' on, 'lnum' on;
 `;
 
+const ProduCardVariations = styled.div`
+  width: 100%;
+  position: absolute;
+  padding-left: 0.45rem;
+  bottom: 1.25rem;
+  left: 0;
+  z-index: 10;
+`;
+
 const ProductCard: FC = () => {
   return (
     <ProductCardRoot>
@@ -62,6 +72,37 @@ const ProductCard: FC = () => {
         <ProductCardImageWrapper>
           <ProductCardImage src="https://www.amd.com/system/files/2019-11/238593-ryzen-9-pib-left-facing-1260x709_0.png" />
         </ProductCardImageWrapper>
+        <ProduCardVariations>
+          <Swiper>
+            <Button
+              color="blue"
+              style={{
+                padding: '4px 10px',
+                fontWeight: 600,
+              }}
+            >
+              Игрушка
+            </Button>
+            <Button
+              style={{
+                padding: '4px 10px',
+                fontWeight: 600,
+                background: '#58CF18',
+              }}
+            >
+              Мартышка
+            </Button>
+            <Button
+              style={{
+                padding: '4px 10px',
+                fontWeight: 600,
+                background: '#FFA601',
+              }}
+            >
+              Мышка
+            </Button>
+          </Swiper>
+        </ProduCardVariations>
       </ProductCardImageRoot>
       <ProducCardName>Длинное название товара в одну строчку п...</ProducCardName>
       <ProducCardPrice>от 350 000 ₽</ProducCardPrice>

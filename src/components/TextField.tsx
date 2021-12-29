@@ -4,6 +4,8 @@ import styled, { css } from 'styled-components';
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   fullWidth?: boolean;
   endAdornment?: React.ReactElement;
+  startAdornment?: React.ReactElement;
+  small?: boolean;
 }
 
 interface TextFieldRootProps {
@@ -23,31 +25,45 @@ const TextFieldRoot = styled.div.attrs<TextFieldRootProps>((props) => ({
     `}
 `;
 
-const TextFieldInputWrapper = styled.div`
-  padding: 16px 0 16px 20px;
+const TextFieldInputWrapper = styled.div<{ small?: boolean }>`
+  padding: ${(props) => (!props.small ? '1rem 0 1rem 1.25rem' : '0.625rem 0.875rem')};
   flex: 1;
 `;
 
-const TextFieldInput = styled.input`
+const TextFieldInput = styled.input<{ small?: boolean }>`
   border: none;
-  font-size: 1rem;
+  font-size: ${(props) => (!props.small ? '1rem' : '0.875rem')};
   width: 100%;
 `;
 
 const TextFieldAdornmentWrapper = styled.div`
   padding: 0.25rem 0.25rem 0.25rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const TextField: FC<TextFieldProps> = ({
   fullWidth = false,
+  startAdornment,
   endAdornment,
+  small,
   className,
   ...props
 }) => {
   return (
     <TextFieldRoot fullWidth={fullWidth} className={className}>
-      <TextFieldInputWrapper>
-        <TextFieldInput {...props} />
+      {startAdornment && (
+        <TextFieldAdornmentWrapper
+          css={css`
+            padding: 0 0 0 0.625rem;
+          `}
+        >
+          {startAdornment}
+        </TextFieldAdornmentWrapper>
+      )}
+      <TextFieldInputWrapper small={small}>
+        <TextFieldInput small={small} {...props} />
       </TextFieldInputWrapper>
       {endAdornment && <TextFieldAdornmentWrapper>{endAdornment}</TextFieldAdornmentWrapper>}
     </TextFieldRoot>

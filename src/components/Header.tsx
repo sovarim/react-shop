@@ -14,6 +14,7 @@ const HeaderRoot = styled.header`
 const HeaderTitle = styled(Link)`
   font-size: 2.3125rem;
   color: inherit;
+  font-weight: 700;
 `;
 
 const HeaderGeo = styled.div`

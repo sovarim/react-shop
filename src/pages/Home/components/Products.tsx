@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 import { Button, ProductCard } from 'components';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { useEffect } from 'react';
+import { fetchProducts } from 'store/actions/ProductActions';
+import { productsSelector } from 'store/selectors';
 
 const ProductsRoot = styled.div`
   width: 100%;
@@ -30,12 +34,19 @@ const FlexItem = styled.div`
 `;
 
 const Products = () => {
+  const dispatch = useAppDispatch();
+  // @ts-ignore
+  const products = useAppSelector(productsSelector);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
   return (
     <ProductsRoot>
       <FlexContainer>
-        {[...new Array(12)].map((_, i) => (
-          <FlexItem key={i}>
-            <ProductCard />
+        {products.map((product) => (
+          <FlexItem key={product.id}>
+            <ProductCard name={product.name} />
           </FlexItem>
         ))}
       </FlexContainer>

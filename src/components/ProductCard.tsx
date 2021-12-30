@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import Button from './Button';
 import Swiper from './Swiper';
 
+interface ProducCardProps {
+  name: string;
+}
+
 const ProductCardRoot = styled.div`
   width: 100%;
 `;
@@ -65,7 +69,7 @@ const ProduCardVariations = styled.div`
   z-index: 10;
 `;
 
-const ProductCard: FC = () => {
+const ProductCard: FC<ProducCardProps> = ({ name }) => {
   return (
     <ProductCardRoot>
       <ProductCardImageRoot>
@@ -104,7 +108,7 @@ const ProductCard: FC = () => {
           </Swiper>
         </ProduCardVariations>
       </ProductCardImageRoot>
-      <ProducCardName>Длинное название товара в одну строчку п...</ProducCardName>
+      <ProducCardName>{name}</ProducCardName>
       <ProducCardPrice>от 350 000 ₽</ProducCardPrice>
       <Button outlined color="blue" fullWidth>
         Добавить в корзину

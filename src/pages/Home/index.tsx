@@ -1,8 +1,8 @@
+import { FC } from 'react';
 import styled from 'styled-components';
 import { Page } from 'components';
 import Products from './components/Products';
 import Categories from './components/Categories';
-import { FC } from 'react';
 
 const HomeTitleWrapper = styled.div`
   display: flex;

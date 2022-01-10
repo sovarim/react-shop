@@ -15,7 +15,7 @@ const SwiperRoot = styled.div`
 const SwiperContainer = styled.div`
   display: flex;
   & > * {
-    margin-right: 6px;
+    margin-left: 6px;
   }
 `;
 

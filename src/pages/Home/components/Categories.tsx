@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Button, Swiper } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import { fetchCategories } from 'store/actions/CategoryActions';
 import { categoriesSelector } from 'store/selectors';
 
@@ -47,4 +47,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default memo(Categories);

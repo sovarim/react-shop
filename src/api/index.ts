@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+export const BASE_URL = 'https://test2.sionic.ru';
+
 export default axios.create({
-  baseURL: 'https://test2.sionic.ru/api',
+  baseURL: `${BASE_URL}/api`,
 });

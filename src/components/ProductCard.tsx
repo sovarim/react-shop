@@ -1,10 +1,13 @@
 import { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Button from './Button';
 import Swiper from './Swiper';
 
 interface ProducCardProps {
   name: string;
+  imgSrc?: string;
+  minPrice?: number;
+  variations?: any[];
 }
 
 const ProductCardRoot = styled.div`
@@ -63,53 +66,41 @@ const ProducCardPrice = styled.p`
 const ProduCardVariations = styled.div`
   width: 100%;
   position: absolute;
-  padding-left: 0.45rem;
+  /* padding-left: 0.45rem; */
   bottom: 1.25rem;
   left: 0;
   z-index: 10;
 `;
 
-const ProductCard: FC<ProducCardProps> = ({ name }) => {
+const colors = ['#2967FF', '#58CF18', '#FFA601'];
+
+const ProductCard: FC<ProducCardProps> = ({ name, imgSrc, minPrice, variations }) => {
   return (
     <ProductCardRoot>
       <ProductCardImageRoot>
         <ProductCardImageWrapper>
-          <ProductCardImage src="https://www.amd.com/system/files/2019-11/238593-ryzen-9-pib-left-facing-1260x709_0.png" />
+          <ProductCardImage src={imgSrc} />
         </ProductCardImageWrapper>
         <ProduCardVariations>
           <Swiper>
-            <Button
-              color="blue"
-              style={{
-                padding: '4px 10px',
-                fontWeight: 600,
-              }}
-            >
-              Игрушка
-            </Button>
-            <Button
-              style={{
-                padding: '4px 10px',
-                fontWeight: 600,
-                background: '#58CF18',
-              }}
-            >
-              Мартышка
-            </Button>
-            <Button
-              style={{
-                padding: '4px 10px',
-                fontWeight: 600,
-                background: '#FFA601',
-              }}
-            >
-              Мышка
-            </Button>
+            {variations?.map((v) => (
+              <Button
+                key={v.id}
+                color="blue"
+                css={css`
+                  padding: 4px 10px;
+                  font-weight: 600;
+                  background: ${colors[+(Math.random() * (3 - 0) + 0).toFixed(0)]};
+                `}
+              >
+                {v.title}
+              </Button>
+            ))}
           </Swiper>
         </ProduCardVariations>
       </ProductCardImageRoot>
       <ProducCardName>{name}</ProducCardName>
-      <ProducCardPrice>от 350 000 ₽</ProducCardPrice>
+      <ProducCardPrice>от {minPrice} ₽</ProducCardPrice>
       <Button outlined color="blue" fullWidth>
         Добавить в корзину
       </Button>

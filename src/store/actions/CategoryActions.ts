@@ -2,12 +2,12 @@ import { Dispatch } from 'redux';
 import api from 'api';
 import {
   CategoryActionTypes,
-  CategoryFields,
+  CategoryActionData,
   CategoryAction,
   AddCategoriesAction,
 } from 'store/types';
 
-export const addCategories = (category: CategoryFields[]): AddCategoriesAction => {
+export const addCategories = (category: CategoryActionData[]): AddCategoriesAction => {
   return {
     type: CategoryActionTypes.ADD_CATEGORIES,
     payload: category,
@@ -24,7 +24,7 @@ export const deleteCategory = (id: number) => {
 export const fetchCategories = () => {
   return async (dispatch: Dispatch<CategoryAction>) => {
     try {
-      const { data } = await api.get<CategoryFields[]>('/Categories');
+      const { data } = await api.get<CategoryActionData[]>('/Categories');
       dispatch(addCategories(data));
     } catch (error) {
       console.error(error);

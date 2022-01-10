@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 import { Button, ProductCard } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import { fetchProducts } from 'store/actions/ProductActions';
+import { fetchProductImages } from 'store/actions/ProductImageActions';
+import { fetchProductVariations } from 'store/actions/ProductVariationActions';
+import { fetchProductVariationProperties } from 'store/actions/ProductVariationPropertyActions';
+import { fetchProductVariationListValues } from 'store/actions/ProductVariationPropertyListValueActions';
+import { fetchProductVarationPropertyValues } from 'store/actions/ProductVariationPropertyValueActions';
 import { productsSelector } from 'store/selectors';
+import { BASE_URL } from 'api';
 
 const ProductsRoot = styled.div`
   width: 100%;
@@ -38,15 +44,27 @@ const Products = () => {
   // @ts-ignore
   const products = useAppSelector(productsSelector);
 
+  console.log(products);
+
   useEffect(() => {
     dispatch(fetchProducts());
+    dispatch(fetchProductImages());
+    dispatch(fetchProductVariations());
+    dispatch(fetchProductVariationProperties());
+    dispatch(fetchProductVariationListValues());
+    dispatch(fetchProductVarationPropertyValues());
   }, []);
   return (
     <ProductsRoot>
       <FlexContainer>
         {products.map((product) => (
           <FlexItem key={product.id}>
-            <ProductCard name={product.name} />
+            <ProductCard
+              name={product.name}
+              imgSrc={`${BASE_URL}/${product.images?.[0]?.image_url}`}
+              minPrice={product.min_price || 0}
+              // variations={product.variation_values}
+            />
           </FlexItem>
         ))}
       </FlexContainer>
@@ -60,4 +78,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default memo(Products);
